@@ -1,0 +1,9 @@
+wikitext2=re.sub('\([^()]*\)', '', wikitext2)
+wikitext2=re.sub('\([^()]*\)', '', wikitext2)
+wikitext2=re.sub('\{[^\{\}]*\}', '', wikitext2)
+        return wikitext2
+    except Exception as e:
+        return 'В энциклопедии нет информации об этом'
+@bot.message_handler(content_types=["text"])
+def handle_text(message):
+    bot.send_message(message.chat.id, getwiki(message.text))
